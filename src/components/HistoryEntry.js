@@ -13,7 +13,7 @@ export default function HistoryEntry({ nameOfGame, players }) {
       <Title>{nameOfGame}</Title>
       <ul>
         {players.map(player => (
-          <Player key={player.name}>
+          <Player data-testid="player-score" key={player.name}>
             <span>{player.name}</span>
             <span>{player.score}</span>
           </Player>
