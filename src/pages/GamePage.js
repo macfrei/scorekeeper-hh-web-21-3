@@ -24,15 +24,18 @@ export default function GamePage({
   return (
     <Grid>
       <Header>{nameOfGame}</Header>
-      {players.map(({ name, score }, index) => (
-        <Player
-          onMinus={() => onPlayerUpdate(index, -1)}
-          onPlus={() => onPlayerUpdate(index, 1)}
-          key={name}
-          name={name}
-          score={score}
-        />
-      ))}
+      <ul aria-label="List of players">
+        {players.map(({ name, score }, index) => (
+          <li key={name}>
+            <Player
+              onMinus={() => onPlayerUpdate(index, -1)}
+              onPlus={() => onPlayerUpdate(index, 1)}
+              name={name}
+              score={score}
+            />
+          </li>
+        ))}
+      </ul>
       <Button onClick={onResetScores}>Reset scores</Button>
       <Button onClick={onEndGame}>End game</Button>
     </Grid>
@@ -43,4 +46,9 @@ const Grid = styled.section`
   display: grid;
   align-content: start;
   gap: 20px;
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
 `
